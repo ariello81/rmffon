@@ -17,25 +17,32 @@ public class TrackService {
     private TrackClient trackClient;
     private StationClient stationClient;
 
+    private List<Station> stations;
+
     @Autowired
     public TrackService(TrackClient trackClient, StationClient stationClient) {
         this.trackClient = trackClient;
         this.stationClient = stationClient;
+        this.stations = stationClient.getStations();
     }
 
     public List<TrackLiteDTO> getTracks(String stationId){
         return trackClient.getTracks(stationId)
                 .stream()
-                .map(item -> new TrackLiteDTO(item.getStart(), item.getAuthor(), item.getTitle(), item.getLenght(), stationId, item.getVotes(), item.getPoints()))
+                .map(item -> new TrackLiteDTO(item.getStart(), item.getAuthor(), item.getTitle(), item.getLenght(),
+                        stations.stream().filter(station -> station.getId().equals(stationId)).findFirst().get().getName(),
+                        item.getVotes(), item.getPoints()))
                 .collect(Collectors.toList());
     }
 
-    public List<TrackLiteDTO> getAllTracks(){
+    public List<TrackLiteDTO> getAuthorTracks(String author){
+        int i=0;
         List<TrackLiteDTO> tracks = new ArrayList<>();
-        for (Station station : stationClient.getStations()) {
+        for (Station station : stations) {
             tracks.addAll(this.getTracks(station.getId()));
+            System.out.println(i++);
         }
-        return tracks;
+        return tracks.stream().filter(item -> item.getAuthor().equalsIgnoreCase(author)).collect(Collectors.toList());
     }
 
 

@@ -31,9 +31,9 @@ public class TrackController {
         return trackService.getTracks(stationId);
     }
 
-    @GetMapping("/tracks/all")
-    public List<TrackLiteDTO> getAllTracks(){
-        return trackService.getAllTracks();
+    @GetMapping("/search/{author}")
+    public List<TrackLiteDTO> getAllTracks(@PathVariable("author") String author){
+        return trackService.getAuthorTracks(author);
     }
 
 
