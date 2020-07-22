@@ -3,16 +3,11 @@ package pl.ryzykowski.rmffon.client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.ryzykowski.rmffon.model.Station;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Component
