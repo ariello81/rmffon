@@ -8,7 +8,10 @@ import pl.ryzykowski.rmffon.dto.TrackLiteDTO;
 import pl.ryzykowski.rmffon.model.Station;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,14 +38,27 @@ public class TrackService {
                 .collect(Collectors.toList());
     }
 
-    public List<TrackLiteDTO> getAuthorTracks(String author){
-        int i=0;
-        List<TrackLiteDTO> tracks = new ArrayList<>();
+    public List<TrackLiteDTO> getAuthorTracks(String author) {
+        List<TrackLiteDTO> tracks = Collections.synchronizedList(new ArrayList<>());
+        List<Thread> threads = new ArrayList<>();
         for (Station station : stations) {
-            tracks.addAll(this.getTracks(station.getId()));
-            System.out.println(i++);
+            Thread t = new Thread(() -> {
+                tracks.addAll(this.getTracks(station.getId()));
+            });
+            threads.add(t);
+            t.start();
         }
-        return tracks.stream().filter(item -> item.getAuthor().equalsIgnoreCase(author)).collect(Collectors.toList());
+        for (int i = 0; i < threads.size(); i++) {
+            try {
+                threads.get(i).join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return tracks
+                .stream()
+                .filter(item -> item.getAuthor().toLowerCase().contains(author.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
 
