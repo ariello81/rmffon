@@ -9,12 +9,12 @@ public class TrackLiteDTO {
     private String stationName;
     private int votes;
     private int points;
-
+    private String average;
 
     public TrackLiteDTO() {
     }
 
-    public TrackLiteDTO(String start, String author, String title, String lenght, String stationName, int votes, int points) {
+    public TrackLiteDTO(String start, String author, String title, String lenght, String stationName, int votes, int points, String average) {
         this.start = start;
         this.author = author;
         this.title = title;
@@ -22,6 +22,7 @@ public class TrackLiteDTO {
         this.stationName = stationName;
         this.votes = votes;
         this.points = points;
+        this.average = average;
     }
 
     public String getStationName() {
@@ -78,5 +79,13 @@ public class TrackLiteDTO {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public String getAverage() {
+        return average;
+    }
+
+    public void setAverage(String average) {
+        this.average = average;
     }
 }

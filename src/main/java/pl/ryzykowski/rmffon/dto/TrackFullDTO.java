@@ -14,12 +14,13 @@ public class TrackFullDTO {
     private String coverBigUrl;
     private int votes;
     private int points;
+    private String average;
 
     public TrackFullDTO() {
     }
 
     public TrackFullDTO(String stationName, String author, String authorUrl, String title, String recordTitle, String lenght,
-                        int year, String start, String coverUrl, String coverBigUrl, int votes, int points) {
+                        int year, String start, String coverUrl, String coverBigUrl, int votes, int points, String average) {
         this.stationName = stationName;
         this.author = author;
         this.authorUrl = authorUrl;
@@ -32,6 +33,7 @@ public class TrackFullDTO {
         this.coverBigUrl = coverBigUrl;
         this.votes = votes;
         this.points = points;
+        this.average = average;
     }
 
     public String getStationName() {
@@ -128,5 +130,13 @@ public class TrackFullDTO {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public String getAverage() {
+        return average;
+    }
+
+    public void setAverage(String average) {
+        this.average = average;
     }
 }

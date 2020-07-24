@@ -32,9 +32,10 @@ public class TrackService {
     public List<TrackLiteDTO> getTracks(String stationId){
         return trackClient.getTracks(stationId)
                 .stream()
-                .map(item -> new TrackLiteDTO(item.getStart(), item.getAuthor(), item.getTitle(), item.getLenght(),
+                .map(item -> new TrackLiteDTO(item.getStart(), item.getAuthor(), item.getTitle(),
+                        Integer.valueOf(item.getLenght())/60 + ":" + String.format("%02d", Integer.valueOf(item.getLenght())%60),
                         stations.stream().filter(station -> station.getId().equals(stationId)).findFirst().get().getName(),
-                        item.getVotes(), item.getPoints()))
+                        item.getVotes(), item.getPoints(), String.format("%.2f", (float)item.getPoints()/item.getVotes())))
                 .collect(Collectors.toList());
     }
 
