@@ -4,6 +4,7 @@
     <title>Search</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -13,10 +14,10 @@
         <span @click="search('oasis')">Oasis | </span>
         <span @click="search('queen')">Queen | </span>
         <span @click="search('u2')">U2 | </span>
-        <span v-for="item in items" @click="ftracks(item.id)">{{ item.name }} | </span>
+        <span v-for="item in items" @click="ftracks(item.id)"  class="navbar-toggler-icon">{{ item.name }} | </span>
     </div>
     <br/>
-    <table>
+    <table class="table">
         <tr v-for="track in tracks">
             <td>{{ track.start }}</td>
             <td>{{ track.author }} </td>
