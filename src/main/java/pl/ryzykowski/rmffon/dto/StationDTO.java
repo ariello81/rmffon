@@ -4,15 +4,13 @@ public class StationDTO {
 
     private String id;
     private String name;
-    private String tracksUrl;
 
     public StationDTO() {
     }
 
-    public StationDTO(String id, String name, String tracksUrl) {
+    public StationDTO(String id, String name) {
         this.id = id;
         this.name = name;
-        this.tracksUrl = tracksUrl;
     }
 
     public String getId() {
@@ -31,11 +29,4 @@ public class StationDTO {
         this.name = name;
     }
 
-    public String getTracksUrl() {
-        return tracksUrl;
-    }
-
-    public void setTracksUrl(String tracksUrl) {
-        this.tracksUrl = tracksUrl;
-    }
 }

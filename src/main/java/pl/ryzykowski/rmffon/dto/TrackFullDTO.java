@@ -2,6 +2,8 @@ package pl.ryzykowski.rmffon.dto;
 
 public class TrackFullDTO {
 
+    private int order;
+    private String stationId;
     private String stationName;
     private String author;
     private String authorUrl;
@@ -19,8 +21,10 @@ public class TrackFullDTO {
     public TrackFullDTO() {
     }
 
-    public TrackFullDTO(String stationName, String author, String authorUrl, String title, String recordTitle, String lenght,
+    public TrackFullDTO(int order, String stationId, String stationName, String author, String authorUrl, String title, String recordTitle, String lenght,
                         int year, String start, String coverUrl, String coverBigUrl, int votes, int points, String average) {
+        this.order = order;
+        this.stationId = stationId;
         this.stationName = stationName;
         this.author = author;
         this.authorUrl = authorUrl;
@@ -34,6 +38,22 @@ public class TrackFullDTO {
         this.votes = votes;
         this.points = points;
         this.average = average;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public String getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(String stationId) {
+        this.stationId = stationId;
     }
 
     public String getStationName() {

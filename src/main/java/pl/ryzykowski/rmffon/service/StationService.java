@@ -21,7 +21,7 @@ public class StationService {
     public List<StationDTO> getStations(){
         return stationClient.getStations()
                 .stream()
-                .map(item -> new StationDTO(item.getId(), item.getName(), "http://localhost:8080/api/tracks/"+item.getId()))
+                .map(item -> new StationDTO(item.getId(), item.getName().replace("&amp;", "&")))
                 .collect(Collectors.toList());
     }
 }

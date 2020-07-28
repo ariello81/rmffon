@@ -2,6 +2,7 @@ package pl.ryzykowski.rmffon.dto;
 
 public class TrackLiteDTO {
 
+    private String stationId;
     private String start;
     private String author;
     private String title;
@@ -10,11 +11,14 @@ public class TrackLiteDTO {
     private int votes;
     private int points;
     private String average;
+    private int order;
 
     public TrackLiteDTO() {
     }
 
-    public TrackLiteDTO(String start, String author, String title, String lenght, String stationName, int votes, int points, String average) {
+    public TrackLiteDTO(int order, String stationId, String start, String author, String title, String lenght, String stationName, int votes, int points, String average) {
+        this.order = order;
+        this.stationId = stationId;
         this.start = start;
         this.author = author;
         this.title = title;
@@ -23,6 +27,22 @@ public class TrackLiteDTO {
         this.votes = votes;
         this.points = points;
         this.average = average;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public String getStationId() {
+        return stationId;
+    }
+
+    public void setStationId(String stationId) {
+        this.stationId = stationId;
     }
 
     public String getStationName() {

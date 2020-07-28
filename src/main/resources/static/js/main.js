@@ -2,7 +2,7 @@ var app = new Vue({
     el: '#app',
     data: {
         items: [],
-        tracks: [],
+        tracks: []
     },
     methods: {
         ftracks(id) {
@@ -16,7 +16,7 @@ var app = new Vue({
                       .then(response => (
                              this.tracks = response.data
                       ))
-         }
+        }
     },
     mounted() {
         axios.get('http://localhost:8080/api/stations')

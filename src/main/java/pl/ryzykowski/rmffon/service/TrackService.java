@@ -11,10 +11,7 @@ import pl.ryzykowski.rmffon.model.Track;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.CountDownLatch;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,7 +32,7 @@ public class TrackService {
     public List<TrackLiteDTO> getTracks(String stationId){
         return trackClient.getTracks(stationId)
                 .stream()
-                .map(item -> new TrackLiteDTO(item.getStart(), item.getAuthor(), item.getTitle(),
+                .map(item -> new TrackLiteDTO(item.getOrder(), stationId, item.getStart(), item.getAuthor(), item.getTitle(),
                         trackLength(item.getLenght()), stationName(stationId),
                         item.getVotes(), item.getPoints(), averagePoints(item)))
                 .collect(Collectors.toList());
@@ -84,7 +81,8 @@ public class TrackService {
                 .filter(station -> station.getId().equals(stationId))
                 .findFirst()
                 .get()
-                .getName();
+                .getName()
+                .replace("&amp;", "&");
     }
 
     private String averagePoints(Track track) {

@@ -10,20 +10,23 @@
 <body>
 <div id="app">
     <div>
-        <span @click="search('coldplay')">Coldplay | </span>
-        <span @click="search('oasis')">Oasis | </span>
-        <span @click="search('queen')">Queen | </span>
-        <span @click="search('u2')">U2 | </span>
-        <span v-for="item in items" @click="ftracks(item.id)"  class="navbar-toggler-icon">{{ item.name }} | </span>
+        <a class="btn btn-link btn-sm" @click="search('coldplay')">Coldplay</a>
+        <a class="btn btn-link btn-sm" @click="search('oasis')">Oasis</a>
+        <a class="btn btn-link btn-sm" @click="search('queen')">Queen</a>
+        <a class="btn btn-link btn-sm" @click="search('u2')">U2</a>
+        <a class="btn btn-link btn-sm" @click="ftracks(item.id)" v-for="item in items">{{ item.name }}</a>
     </div>
     <br/>
     <table class="table">
-        <tr v-for="track in tracks">
+        <tr :class="{'bg-warning':(track.order===0), 'bg-danger':(track.order<0), 'bg-success':(track.order>0)}" v-for="track in tracks">
             <td>{{ track.start }}</td>
             <td>{{ track.author }} </td>
             <td>{{ track.title }}</td>
+            <td>{{ track.length }}</td>
+            <td><a class="btn btn-link btn-sm" :href="'https://www.rmfon.pl/play,' + track.stationId" target="_blank">{{ track.stationName }}</a></td>
+            <td>{{ track.votes }}</td>
+            <td>{{ track.points }}</td>
             <td>{{ track.average }}</td>
-            <td>{{ track.stationName }}</td>
         </tr>
     </table>
 </div>
