@@ -5,7 +5,10 @@
     <title>Search</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -18,21 +21,23 @@
         <a class="btn btn-link btn-sm" @click="ftracks(item.id)" v-for="item in items">{{ item.name }}</a>
     </div>
     <br/>
-    <table :class="{'table':isTable, 'hidden':isHidden}">
+    <table :class="{'table':isTracksVisible, 'hidden':isTracksHidden}">
         <tr v-if="tracks.length > 0">
             <th>Start</th>
             <th>Wykonawca</th>
             <th>Tytuł</th>
+            <th>Rok</th>
             <th>Długość</th>
             <th>Stacja</th>
             <th>Głosy</th>
             <th>Punkty</th>
             <th>Srednia</th>
         </tr>
-        <tr :class="{'bg-warning':(track.order===0), 'bg-danger':(track.order<0), 'bg-success':(track.order>0)}" v-for="track in tracks">
+        <tr :class="{'table-warning':(track.order===0), 'table-danger':(track.order<0), 'table-success':(track.order>0)}" v-for="track in tracks">
             <td>{{ track.start }}</td>
-            <td>{{ track.author }} </td>
-            <td>{{ track.title }}</td>
+            <td>{{ track.author }}</td>
+            <td><a href="#" data-toggle="popover" title="yyy" data-content="xxx">{{ track.title }}</a></td>
+            <td>{{ track.year }}</td>
             <td>{{ track.lenght }}</td>
             <td><a class="btn btn-link btn-sm" :href="'https://www.rmfon.pl/play,' + track.stationId" target="_blank">{{ track.stationName }}</a></td>
             <td>{{ track.votes }}</td>
@@ -44,6 +49,6 @@
         </tr>
     </table>
 </div>
-</body>
 <script src="js/main.js"></script>
+</body>
 </html>

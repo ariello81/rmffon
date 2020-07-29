@@ -1,10 +1,15 @@
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();
+});
+
+
 var app = new Vue({
     el: '#app',
     data: {
         items: [],
         tracks: [],
-        isTable: false,
-        isHidden: true
+        isTracksVisible: false,
+        isTracksHidden: true
     },
     methods: {
         ftracks(id) {
@@ -12,16 +17,16 @@ var app = new Vue({
                 .then(response => (
                      this.tracks = response.data
                 ))
-                this.isTable = true
-                this.isHidden = false
+                this.isTracksVisible = true
+                this.isTracksHidden = false
         },
         search(author) {
             axios.get('http://localhost:8080/api/search/'+author)
                 .then(response => (
                     this.tracks = response.data
                  ))
-                 this.isTable = true
-                 this.isHidden = false
+                 this.isTracksVisible = true
+                 this.isTracksHidden = false
         }
     },
     mounted() {

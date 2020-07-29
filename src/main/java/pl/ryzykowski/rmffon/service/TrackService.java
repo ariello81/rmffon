@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.ryzykowski.rmffon.aop.Timed;
 import pl.ryzykowski.rmffon.client.StationClient;
 import pl.ryzykowski.rmffon.client.TrackClient;
-import pl.ryzykowski.rmffon.dto.TrackLiteDTO;
+import pl.ryzykowski.rmffon.dto.TrackDTO;
 import pl.ryzykowski.rmffon.model.Station;
 import pl.ryzykowski.rmffon.model.Track;
 
@@ -29,18 +29,19 @@ public class TrackService {
         this.stations = stationClient.getStations();
     }
 
-    public List<TrackLiteDTO> getTracks(String stationId){
+    public List<TrackDTO> getTracks(String stationId){
         return trackClient.getTracks(stationId)
                 .stream()
-                .map(item -> new TrackLiteDTO(item.getOrder(), stationId, item.getStart(), item.getAuthor(), item.getTitle(),
-                        trackLength(item.getLenght()), stationName(stationId),
+                .map(item -> new TrackDTO(item.getOrder(), stationId, stationName(stationId), item.getAuthor(),
+                        item.getAuthorUrl(), item.getTitle(), item.getRecordTitle(), trackLength(item.getLenght()),
+                        item.getYear(), item.getStart(), item.getCoverUrl(), item.getCoverBigUrl(),
                         item.getVotes(), item.getPoints(), averagePoints(item)))
                 .collect(Collectors.toList());
     }
 
     @Timed
-    public List<TrackLiteDTO> getAuthorTracks(String author)  {
-        List<TrackLiteDTO> tracks = Collections.synchronizedList(new ArrayList<>());
+    public List<TrackDTO> getAuthorTracks(String author)  {
+        List<TrackDTO> tracks = Collections.synchronizedList(new ArrayList<>());
         List<Thread> threads = new ArrayList<>();
         for (Station station : stations) {
             Thread t = new Thread(() -> {
@@ -61,7 +62,7 @@ public class TrackService {
                 .filter(item -> item.getAuthor().toLowerCase().contains(author.toLowerCase()))
                 .collect(Collectors.toList())
                 .stream()
-                .sorted((TrackLiteDTO t1, TrackLiteDTO t2)->t1.getStart().compareTo(t2.getStart()))
+                .sorted((TrackDTO t1, TrackDTO t2)->t1.getStart().compareTo(t2.getStart()))
                 .collect(Collectors.toList());
     }
 
