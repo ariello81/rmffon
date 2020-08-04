@@ -1,8 +1,3 @@
-$(document).ready(function(){
-  $('[data-toggle="popover"]').popover();
-});
-
-
 var app = new Vue({
     el: '#app',
     data: {
