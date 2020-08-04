@@ -1,3 +1,5 @@
+var urlApi = 'http://rmffon.herokuapp.com/api'
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -8,7 +10,7 @@ var app = new Vue({
     },
     methods: {
         ftracks(id) {
-            axios.get('http://localhost:8080/api/tracks/'+id)
+            axios.get(urlApi+'/tracks/'+id)
                 .then(response => (
                      this.tracks = response.data
                 ))
@@ -16,7 +18,7 @@ var app = new Vue({
                 this.isTracksHidden = false
         },
         search(author) {
-            axios.get('http://localhost:8080/api/search/'+author)
+            axios.get(urlApi+'/search/'+author)
                 .then(response => (
                     this.tracks = response.data
                  ))
@@ -25,7 +27,7 @@ var app = new Vue({
         }
     },
     mounted() {
-        axios.get('http://localhost:8080/api/stations')
+        axios.get(urlApi+'/stations')
             .then(response => (
                 this.items = response.data
             ))
