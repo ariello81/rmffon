@@ -18,13 +18,11 @@ public class TrackController {
         this.trackService = trackService;
     }
 
-    @CrossOrigin
     @GetMapping("/tracks/{stationId}")
     public List<TrackDTO> getTracks(@PathVariable("stationId") String stationId){
         return trackService.getTracks(stationId);
     }
 
-    @CrossOrigin
     @GetMapping("/search/{author}")
     public List<TrackDTO> getAllTracks(@PathVariable("author") String author){
         return trackService.getAuthorTracks(author);

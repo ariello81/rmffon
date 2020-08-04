@@ -21,7 +21,6 @@ public class StationController {
         this.stationService = stationService;
     }
 
-    @CrossOrigin
     @GetMapping("/stations")
     public List<StationDTO> getStations(){
         return stationService.getStations();
