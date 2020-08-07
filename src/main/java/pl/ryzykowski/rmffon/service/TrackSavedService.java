@@ -15,15 +15,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class TrackScheduledService {
+public class TrackSavedService {
 
     private TrackService trackService;
     private TrackRepository trackRepository;
 
     @Autowired
-    public TrackScheduledService(TrackService trackService, TrackRepository trackRepository) {
+    public TrackSavedService(TrackService trackService, TrackRepository trackRepository) {
         this.trackService = trackService;
         this.trackRepository = trackRepository;
+    }
+
+    public List<TrackEntity> getAllTracks(){
+        return trackRepository.getAll();
     }
 
     @Scheduled(cron = "0 0,30 * * * ?")
