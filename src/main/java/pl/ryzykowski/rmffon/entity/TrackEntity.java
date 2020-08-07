@@ -8,7 +8,7 @@ public class TrackEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name="station_name")
     private String stationName;
@@ -31,11 +31,28 @@ public class TrackEntity {
     @Column(name="start")
     private String start;
 
-    public long getId() {
+    @Column(name="date")
+    private String date;
+
+    public TrackEntity() {
+    }
+
+    public TrackEntity(String stationName, String author, String title, String recordTitle, String lenght, int year, String start, String date) {
+        this.stationName = stationName;
+        this.author = author;
+        this.title = title;
+        this.recordTitle = recordTitle;
+        this.lenght = lenght;
+        this.year = year;
+        this.start = start;
+        this.date = date;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -95,6 +112,14 @@ public class TrackEntity {
         this.start = start;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "TrackEntity{" +
@@ -106,6 +131,7 @@ public class TrackEntity {
                 ", lenght='" + lenght + '\'' +
                 ", year=" + year +
                 ", start='" + start + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 
