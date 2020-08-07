@@ -40,9 +40,16 @@ public class TrackService {
                 .collect(Collectors.toList());
     }
 
-    @Scheduled(cron = "0 */20 * * * ?")
+    @Scheduled(cron = "0 15,45 * * * ?")
     public void getColdplayTracks(){
         List<TrackDTO> tracks = getAuthorTracks("coldplay");
+        System.out.println("jestem");
+        tracks.stream().forEach(System.out::println);
+    }
+
+    @Scheduled(cron = "0 0,30 * * * ?")
+    public void getU2Tracks(){
+        List<TrackDTO> tracks = getAuthorTracks("u2");
         System.out.println("jestem");
         tracks.stream().forEach(System.out::println);
     }
