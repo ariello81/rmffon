@@ -3,7 +3,7 @@ package pl.ryzykowski.rmffon.entity;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity (name="tracks")
+@Entity (name="track")
 public class TrackEntity {
 
     @Id
