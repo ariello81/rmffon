@@ -159,4 +159,25 @@ public class TrackDTO {
     public void setAverage(String average) {
         this.average = average;
     }
+
+    @Override
+    public String toString() {
+        return "TrackDTO{" +
+                "order=" + order +
+                ", stationId='" + stationId + '\'' +
+                ", stationName='" + stationName + '\'' +
+                ", author='" + author + '\'' +
+                ", authorUrl='" + authorUrl + '\'' +
+                ", title='" + title + '\'' +
+                ", recordTitle='" + recordTitle + '\'' +
+                ", lenght='" + lenght + '\'' +
+                ", year=" + year +
+                ", start='" + start + '\'' +
+                ", coverUrl='" + coverUrl + '\'' +
+                ", coverBigUrl='" + coverBigUrl + '\'' +
+                ", votes=" + votes +
+                ", points=" + points +
+                ", average='" + average + '\'' +
+                '}';
+    }
 }

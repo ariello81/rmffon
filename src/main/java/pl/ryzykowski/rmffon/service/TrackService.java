@@ -1,6 +1,7 @@
 package pl.ryzykowski.rmffon.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import pl.ryzykowski.rmffon.aop.Timed;
 import pl.ryzykowski.rmffon.client.StationClient;
@@ -37,6 +38,13 @@ public class TrackService {
                         item.getYear(), item.getStart(), item.getCoverUrl(), item.getCoverBigUrl(),
                         item.getVotes(), item.getPoints(), averagePoints(item)))
                 .collect(Collectors.toList());
+    }
+
+    @Scheduled(cron = "0 */20 * * * ?")
+    public void getColdplayTracks(){
+        List<TrackDTO> tracks = getAuthorTracks("coldplay");
+        System.out.println("jestem");
+        tracks.stream().forEach(System.out::println);
     }
 
     @Timed
