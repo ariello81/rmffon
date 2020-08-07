@@ -27,7 +27,7 @@ public class TrackSavedService {
     }
 
     public List<TrackEntity> getAllTracks(){
-        return trackRepository.getAll();
+        return trackRepository.findAll();
     }
 
     @Scheduled(cron = "0 0,30 * * * ?")
@@ -65,7 +65,7 @@ public class TrackSavedService {
 
     private String getStrDate(){
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormat.format(date);
         return strDate;
     }
