@@ -18,9 +18,9 @@ public class TrackController {
         this.trackService = trackService;
     }
 
-    @GetMapping("/tracks/{stationId}")
-    public List<TrackDTO> getTracks(@PathVariable("stationId") String stationId){
-        return trackService.getTracks(stationId);
+    @GetMapping("/tracks/{radioService}/{stationId}")
+    public List<TrackDTO> getTracks(@PathVariable("radioService") String radioService, @PathVariable("stationId") String stationId){
+        return trackService.getTracks(radioService, stationId);
     }
 
     @GetMapping("/search/{author}")

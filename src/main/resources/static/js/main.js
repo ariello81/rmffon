@@ -1,16 +1,17 @@
-var urlApi = 'http://rmffon.herokuapp.com/api'
+//var urlApi = 'http://rmffon.herokuapp.com/api'
+var urlApi = 'http://localhost:8083/api'
 
 var app = new Vue({
     el: '#app',
     data: {
-        items: [],
+        stations: [],
         tracks: [],
         isTracksVisible: false,
         isTracksHidden: true
     },
     methods: {
-        ftracks(id) {
-            axios.get(urlApi+'/tracks/'+id)
+        ftracks(id, radioService) {
+            axios.get(urlApi+'/tracks/'+radioService+'/'+id)
                 .then(response => (
                      this.tracks = response.data
                 ))
@@ -29,7 +30,7 @@ var app = new Vue({
     mounted() {
         axios.get(urlApi+'/stations')
             .then(response => (
-                this.items = response.data
+                this.stations = response.data
             ))
     }
 

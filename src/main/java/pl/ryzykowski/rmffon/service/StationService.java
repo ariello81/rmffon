@@ -19,9 +19,14 @@ public class StationService {
     }
 
     public List<StationDTO> getStations(){
-        return stationClient.getStations()
+        List<StationDTO> stations = stationClient.getStations()
                 .stream()
-                .map(item -> new StationDTO(item.getId(), item.getName().replace("&amp;", "&")))
+                .map(item -> new StationDTO(item.getId(), item.getName().replace("&amp;", "&"), "RMF"))
                 .collect(Collectors.toList());
+        stations.addAll(stationClient.getStationsOpenFm()
+                .stream()
+                .map(item -> new StationDTO(item.getId(), item.getName(), "OPENFM"))
+                .collect(Collectors.toList()));
+        return stations;
     }
 }

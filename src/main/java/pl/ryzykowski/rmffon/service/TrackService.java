@@ -1,7 +1,6 @@
 package pl.ryzykowski.rmffon.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import pl.ryzykowski.rmffon.aop.Timed;
 import pl.ryzykowski.rmffon.client.StationClient;
@@ -22,22 +21,35 @@ public class TrackService {
     private StationClient stationClient;
 
     private List<Station> stations;
+    private List<Station> stationsOpenFm;
 
     @Autowired
     public TrackService(TrackClient trackClient, StationClient stationClient) {
         this.trackClient = trackClient;
         this.stationClient = stationClient;
         this.stations = stationClient.getStations();
+        this.stationsOpenFm = stationClient.getStationsOpenFm();
     }
 
-    public List<TrackDTO> getTracks(String stationId){
-        return trackClient.getTracks(stationId)
-                .stream()
-                .map(item -> new TrackDTO(item.getOrder(), stationId, stationName(stationId), item.getAuthor(),
-                        item.getAuthorUrl(), item.getTitle(), item.getRecordTitle(), trackLength(item.getLenght()),
-                        item.getYear(), item.getStart(), item.getCoverUrl(), item.getCoverBigUrl(),
-                        item.getVotes(), item.getPoints(), averagePoints(item)))
-                .collect(Collectors.toList());
+    public List<TrackDTO> getTracks(String radioService, String stationId){
+        if (radioService.equals("RMF")) {
+            return trackClient.getTracks(stationId)
+                    .stream()
+                    .map(item -> new TrackDTO(item.getOrder(), stationId, stationName(stationId, stations), item.getAuthor(),
+                            item.getAuthorUrl(), item.getTitle(), item.getRecordTitle(), trackLength(item.getLenght()),
+                            item.getYear(), item.getStart(), item.getCoverUrl(), item.getCoverBigUrl(),
+                            item.getVotes(), item.getPoints(), averagePoints(item)))
+                    .collect(Collectors.toList());
+        }
+        else {
+            return trackClient.getTracksOpenFm(stationId)
+                    .stream()
+                    .map(item -> new TrackDTO(0, stationId, stationName(stationId, stationsOpenFm), item.getSong().getArtist(),
+                            "", item.getSong().getTitle(), item.getSong().getAlbum().getTitle(), "0:00",
+                            Integer.valueOf(item.getSong().getAlbum().getYear()), "0:00", "", "",
+                            0, 0, ""))
+                    .collect(Collectors.toList());
+        }
     }
 
 
@@ -47,7 +59,7 @@ public class TrackService {
         List<Thread> threads = new ArrayList<>();
         for (Station station : stations) {
             Thread t = new Thread(() -> {
-                tracks.addAll(this.getTracks(station.getId()));
+                tracks.addAll(this.getTracks("RMF", station.getId()));
             });
             threads.add(t);
             t.start();
@@ -78,14 +90,14 @@ public class TrackService {
         }
     }
 
-    private String stationName(String stationId){
-        return stations
-                .stream()
-                .filter(station -> station.getId().equals(stationId))
-                .findFirst()
-                .get()
-                .getName()
-                .replace("&amp;", "&");
+    private String stationName(String stationId, List<Station> stations){
+            return stations
+                    .stream()
+                    .filter(station -> station.getId().equals(stationId))
+                    .findFirst()
+                    .get()
+                    .getName()
+                    .replace("&amp;", "&");
     }
 
     private String averagePoints(Track track) {

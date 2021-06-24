@@ -15,7 +15,7 @@
         <a class="btn btn-link btn-sm" @click="search('oasis')">Oasis</a>
         <a class="btn btn-link btn-sm" @click="search('queen')">Queen</a>
         <a class="btn btn-link btn-sm" @click="search('u2')">U2</a>
-        <a class="btn btn-link btn-sm" @click="ftracks(item.id)" v-for="item in items">{{ item.name }}</a>
+        <a class="btn btn-link btn-sm" @click="ftracks(station.id, station.radioService)" v-for="station in stations">{{ station.name }}</a>
     </div>
     <br/>
     <table :class="{'table':isTracksVisible, 'hidden':isTracksHidden}">
