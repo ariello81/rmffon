@@ -36,7 +36,7 @@
             <td>{{ track.title }}</td>
             <td>{{ track.year }}</td>
             <td>{{ track.lenght }}</td>
-            <td><a class="btn btn-link btn-sm" :href="'https://www.rmfon.pl/play,' + track.stationId" target="_blank">{{ track.stationName }}</a></td>
+            <td><a class="btn btn-link btn-sm" :href="track.stationLink" target="_blank">{{ track.stationName }}</a></td>
             <td>{{ track.votes }}</td>
             <td>{{ track.points }}</td>
             <td>{{ track.average }}</td>

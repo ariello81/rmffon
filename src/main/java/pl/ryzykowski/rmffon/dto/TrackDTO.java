@@ -17,12 +17,13 @@ public class TrackDTO {
     private int votes;
     private int points;
     private String average;
+    private String stationLink;
 
     public TrackDTO() {
     }
 
     public TrackDTO(int order, String stationId, String stationName, String author, String authorUrl, String title, String recordTitle, String lenght,
-                    int year, String start, String coverUrl, String coverBigUrl, int votes, int points, String average) {
+                    int year, String start, String coverUrl, String coverBigUrl, int votes, int points, String average, String stationLink) {
         this.order = order;
         this.stationId = stationId;
         this.stationName = stationName;
@@ -38,6 +39,7 @@ public class TrackDTO {
         this.votes = votes;
         this.points = points;
         this.average = average;
+        this.stationLink = stationLink;
     }
 
     public int getOrder() {
@@ -158,6 +160,14 @@ public class TrackDTO {
 
     public void setAverage(String average) {
         this.average = average;
+    }
+
+    public String getStationLink() {
+        return stationLink;
+    }
+
+    public void setStationLink(String stationLink) {
+        this.stationLink = stationLink;
     }
 
     @Override

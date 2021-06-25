@@ -36,10 +36,5 @@ public class StationClient {
         return responseEntity.getBody().getStations();
     }
 
-    public List<Station> getAllStations() {
-        List<Station> stations = getStations();
-        stations.addAll(getStationsOpenFm());
-        return stations;
-    }
 
 }

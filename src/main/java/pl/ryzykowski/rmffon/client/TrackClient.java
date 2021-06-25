@@ -40,4 +40,9 @@ public class TrackClient {
                 .get(0).getTracks();
     }
 
+    public List<Channel> getChannelsOpenFm(){
+        ResponseEntity<OpenFmLong> responseEntity = restTemplate.exchange(ENDPOINT_TRACKS_OPENFM, HttpMethod.GET, null, OpenFmLong.class);
+        return responseEntity.getBody().getChannels();
+    }
+
 }
