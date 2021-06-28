@@ -13,6 +13,9 @@ import pl.ryzykowski.rmffon.model.Track;
 
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -156,10 +159,13 @@ public class TrackService {
 
     private String timeOfStart(double begin) {
         Instant instant = Instant.ofEpochSecond((int) Math.round(begin));
-        Date date = Date.from( instant );
+        LocalDate localDate
+                = LocalDateTime.ofInstant(instant, ZoneOffset.UTC).toLocalDate();
+        //Date date = Date.from( instant );
         String pattern = "HH:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        return simpleDateFormat.format(date);
+        //return simpleDateFormat.format(date);
+        return simpleDateFormat.format(localDate);
     }
 
 }
