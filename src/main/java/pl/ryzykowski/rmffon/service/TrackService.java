@@ -157,10 +157,10 @@ public class TrackService {
 
     private String timeOfStart(double begin) {
         Instant instant = Instant.ofEpochSecond((int) Math.round(begin));
-        LocalDate localDate
-                = LocalDateTime.ofInstant(instant, ZoneId.of("Europe/Berlin")).toLocalDate();
+        LocalDateTime localDateTime
+                = LocalDateTime.ofInstant(instant, ZoneId.of("Europe/Berlin"));
         String pattern = "HH:mm:ss";
-        return localDate.format(DateTimeFormatter.ofPattern(pattern));
+        return localDateTime.format(DateTimeFormatter.ofPattern(pattern));
     }
 
 }
