@@ -2,31 +2,27 @@ package pl.ryzykowski.rmffon.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.ryzykowski.rmffon.client.StationClient;
 import pl.ryzykowski.rmffon.dto.StationDTO;
+import pl.ryzykowski.rmffon.service.client.StationServiceClient;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class StationService {
 
-    private StationClient stationClient;
+    private List<StationServiceClient> stationServiceClients;
 
     @Autowired
-    public StationService(StationClient stationClient) {
-        this.stationClient = stationClient;
+    public StationService(List<StationServiceClient> stationServiceClients) {
+        this.stationServiceClients = stationServiceClients;
     }
 
     public List<StationDTO> getStations(){
-        List<StationDTO> stations = stationClient.getStations()
-                .stream()
-                .map(item -> new StationDTO(item.getId(), item.getName().replace("&amp;", "&"), "RMF"))
-                .collect(Collectors.toList());
-        stations.addAll(stationClient.getStationsOpenFm()
-                .stream()
-                .map(item -> new StationDTO(item.getId(), item.getName(), "OPENFM"))
-                .collect(Collectors.toList()));
+        List<StationDTO> stations = new ArrayList<>();
+        for (StationServiceClient stationServiceClient : stationServiceClients) {
+            stations.addAll(stationServiceClient.getStations());
+        }
         return stations;
     }
 }
