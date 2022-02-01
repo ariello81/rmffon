@@ -14,10 +14,7 @@ import pl.ryzykowski.rmffon.model.Track;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -110,7 +107,7 @@ public class TrackService {
                 .filter(item -> item.getAuthor().toLowerCase().contains(author.toLowerCase()))
                 .collect(Collectors.toList())
                 .stream()
-                .sorted((TrackDTO t1, TrackDTO t2)->t1.getStart().compareTo(t2.getStart()))
+                .sorted(Comparator.comparing(TrackDTO::getStart))
                 .collect(Collectors.toList());
     }
 

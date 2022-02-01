@@ -1,5 +1,7 @@
 package pl.ryzykowski.rmffon.dto;
 
+import java.util.Objects;
+
 public class StationDTO {
 
     private String id;
@@ -37,5 +39,20 @@ public class StationDTO {
 
     public void setRadioService(String radioService) {
         this.radioService = radioService;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StationDTO that = (StationDTO) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(radioService, that.radioService);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, radioService);
     }
 }
