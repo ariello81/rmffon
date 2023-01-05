@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+<div id="app">
+    <div>
+        <a class="btn btn-link btn-sm" @click="search('coldplay')">Coldplay</a>
+        <a class="btn btn-link btn-sm" @click="search('oasis')">Oasis</a>
+        <a class="btn btn-link btn-sm" @click="search('queen')">Queen</a>
+        <a class="btn btn-link btn-sm" @click="search('u2')">U2</a>
+        <a class="btn btn-link btn-sm" @click="ftracks(station.id, station.radioService)" v-for="station in stations">{{ station.name }}</a>
+    </div>
+    <br/>
+    <table :class="{'table':isTracksVisible, 'hidden':isTracksHidden}">
+        <tr v-if="tracks.length > 0">
+            <th>Start</th>
+            <th>Wykonawca</th>
+            <th>Tytuł</th>
+            <th>Rok</th>
+            <th>Długość</th>
+            <th>Stacja</th>
+            <th>Głosy</th>
+            <th>Punkty</th>
+            <th>Srednia</th>
+        </tr>
+        <tr :class="{'table-warning':(track.order===0), 'table-danger':(track.order<0), 'table-success':(track.order>0)}" v-for="track in tracks">
+            <td>{{ track.start }}</td>
+            <td>{{ track.author }}</td>
+            <td>{{ track.title }}</td>
+            <td>{{ track.year }}</td>
+            <td>{{ track.lenght }}</td>
+            <td><a class="btn btn-link btn-sm" :href="track.stationLink" target="_blank">{{ track.stationName }}</a></td>
+            <td>{{ track.votes }}</td>
+            <td>{{ track.points }}</td>
+            <td>{{ track.average }}</td>
+        </tr>
+        <tr v-if="tracks.length === 0">
+            <td colspan="8">Brak utworów do wyświetlenia</td>
+        </tr>
+    </table>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
