@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
-import pl.ryzykowski.rmffon.client.StationClient;
+
+import pl.ryzykowski.rmffon.client.RmfClient;
 import pl.ryzykowski.rmffon.dto.StationDTO;
 import pl.ryzykowski.rmffon.model.Station;
 import pl.ryzykowski.rmffon.service.client.impl.StationServiceClientRmf;
@@ -20,7 +20,7 @@ import static org.mockito.BDDMockito.given;
 public class StationServiceClientRmfFmTest {
 
     @Mock
-    StationClient stationClient;
+    RmfClient rmfClient;
 
     @InjectMocks
     StationServiceClientRmf stationServiceClientRmf;
@@ -32,7 +32,7 @@ public class StationServiceClientRmfFmTest {
 
     @Test
     public void should_return_formatted_stations(){
-        given(stationClient.getStations()).willReturn(listStations());
+        given(rmfClient.getStations()).willReturn(listStations());
         List<StationDTO> actual = stationServiceClientRmf.getStations();
         List<StationDTO> expected = listStationsDTO();
         assertThat(actual).isEqualTo(expected);
