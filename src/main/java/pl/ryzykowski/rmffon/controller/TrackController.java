@@ -23,11 +23,5 @@ public class TrackController {
         return trackService.getTracks(radioService, stationId);
     }
 
-    @GetMapping("/search/{author}")
-    public List<TrackDTO> getAllTracks(@PathVariable("author") String author){
-        return trackService.getAuthorTracks(author);
-    }
-
-
 
 }

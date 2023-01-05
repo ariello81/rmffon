@@ -11,18 +11,25 @@ import java.util.List;
 @Service
 public class StationService {
 
-    private List<StationServiceClient> stationServiceClients;
+    //private List<StationServiceClient> stationServiceClients;
+    private StationServiceClient stationServiceClientRmf;
 
     @Autowired
+    public StationService(StationServiceClient stationServiceClientRmf) {
+        this.stationServiceClientRmf = stationServiceClientRmf;
+    }
+
+    /*
     public StationService(List<StationServiceClient> stationServiceClients) {
         this.stationServiceClients = stationServiceClients;
-    }
+    }*/
 
     public List<StationDTO> getStations(){
         List<StationDTO> stations = new ArrayList<>();
-        for (StationServiceClient stationServiceClient : stationServiceClients) {
+        stationServiceClientRmf.getStations();
+        /*for (StationServiceClient stationServiceClient : stationServiceClients) {
             stations.addAll(stationServiceClient.getStations());
-        }
+        }*/
         return stations;
     }
 }
