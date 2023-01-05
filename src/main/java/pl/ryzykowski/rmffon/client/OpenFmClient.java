@@ -1,7 +1,6 @@
 package pl.ryzykowski.rmffon.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -12,23 +11,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class TrackClient {
+public class OpenFmClient {
 
     private final RestTemplate restTemplate;
 
-    private final String ENDPOINT_TRACKS = "http://rmfon.pl/stacje/playlista_X.json.txt";
+    private final String ENDPOINT_STATIONS_OPENFM = "https://open.fm/api/static/stations/stations_new.json";
 
     private final String ENDPOINT_TRACKS_OPENFM = "https://open.fm/api/api-ext/v2/channels/long.json";
 
     @Autowired
-    public TrackClient(RestTemplate restTemplate) {
+    public OpenFmClient(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public List<Track> getTracks(String stationId){
-        ResponseEntity<List<Track>> responseEntity = restTemplate.exchange(ENDPOINT_TRACKS.replace("X", stationId),
-                HttpMethod.GET, null, new ParameterizedTypeReference<List<Track>>(){});
-        return responseEntity.getBody();
+
+    public List<Station> getStationsOpenFm(){
+        ResponseEntity<OpenFm> responseEntity = restTemplate.exchange(ENDPOINT_STATIONS_OPENFM, HttpMethod.GET, null, OpenFm.class);
+        return responseEntity.getBody().getStations();
     }
 
     public List<OpenFmTrack> getTracksOpenFm(String stationId){
