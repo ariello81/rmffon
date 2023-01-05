@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fa60c26b-3747-4784-b1ee-29d9e07f1026" name="Default Changelist" comment="poprawki w wyszukiwaniu artysty">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/master" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="aaf7f43f-7221-44bb-a5b7-436299df1e36" />
+        <option name="url" value="https://github.com/ariello81/rmffon" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="1f3RzevuipxlnSo3B7RZfAAAp43" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ariel/IdeaProjects/rmffon/pom.xml&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ariel\IdeaProjects\rmffon\src\main\java\pl\ryzykowski\rmffon\service\client\impl" />
+      <recent name="C:\Users\Ariel\IdeaProjects\rmffon\src\main\java\pl\ryzykowski\rmffon\service\client" />
+      <recent name="C:\Users\Ariel\IdeaProjects\rmffon\src\main\java\pl\ryzykowski\rmffon\service" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="RmffonSongsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="pl.ryzykowski.rmffon.RmffonSongsApplication" />
+      <module name="rmffon" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.ryzykowski.rmffon.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RmffonSongsApplication" />
+        <item itemvalue="Application.RmffonSongsApplication" />
+        <item itemvalue="Application.RmffonSongsApplication" />
+        <item itemvalue="Application.RmffonSongsApplication" />
+        <item itemvalue="Application.RmffonSongsApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fa60c26b-3747-4784-b1ee-29d9e07f1026" name="Default Changelist" comment="" />
+      <created>1595445053358</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595445053358</updated>
+    </task>
+    <task id="LOCAL-00001" summary="poprawki w wyszukiwaniu artysty">
+      <created>1595447800286</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1595447800286</updated>
+    </task>
+    <task id="LOCAL-00002" summary="przeszukiwanie wszystkich stacji w watkach">
+      <created>1595512528932</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595512528932</updated>
+    </task>
+    <task id="LOCAL-00003" summary="dodano vue">
+      <created>1595827912028</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595827912028</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Wprowadzono wzorzec strategii do klasy StationService">
+      <created>1639985554750</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639985554750</updated>
+    </task>
+    <task id="LOCAL-00005" summary="duza przebudowa kodu">
+      <created>1672904913807</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672904913807</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="ec4e0037-99e8-49a9-83e9-ac872a40ee44">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="ec4e0037-99e8-49a9-83e9-ac872a40ee44" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="poprawki w wyszukiwaniu artysty" />
+    <MESSAGE value="przeszukiwanie wszystkich stacji w watkach" />
+    <MESSAGE value="dodano vue" />
+    <MESSAGE value="Wprowadzono wzorzec strategii do klasy StationService" />
+    <MESSAGE value="duza przebudowa kodu" />
+    <option name="LAST_COMMIT_MESSAGE" value="duza przebudowa kodu" />
+  </component>
+</project>
