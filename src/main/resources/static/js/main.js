@@ -1,4 +1,4 @@
-//var urlApi = 'http://rmffon.herokuapp.com/api'
+//var urlApi = 'http://rmffon.alwaysdata.net/api'
 var urlApi = 'http://localhost:8080/api'
 
 var app = new Vue({
