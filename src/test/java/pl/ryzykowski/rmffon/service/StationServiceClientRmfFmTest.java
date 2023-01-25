@@ -2,10 +2,12 @@ package pl.ryzykowski.rmffon.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import org.mockito.junit.jupiter.MockitoExtension;
 import pl.ryzykowski.rmffon.client.RmfClient;
 import pl.ryzykowski.rmffon.dto.StationDTO;
 import pl.ryzykowski.rmffon.model.Station;
@@ -17,6 +19,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
+@ExtendWith(MockitoExtension.class) // <- uncomment if setUp method is commented
 public class StationServiceClientRmfFmTest {
 
     @Mock
@@ -25,10 +28,10 @@ public class StationServiceClientRmfFmTest {
     @InjectMocks
     StationServiceClientRmf stationServiceClientRmf;
 
-    @BeforeEach
+    /*@BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
+        MockitoAnnotations.initMocks(this); // <- uncomment if @ExtendsWith is commented
+    }*/
 
     @Test
     public void should_return_formatted_stations(){
